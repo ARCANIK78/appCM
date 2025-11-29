@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
+
 const NavBar = () => {
   const { auth, signOut } = useAuth();
 
@@ -35,9 +36,25 @@ const NavBar = () => {
                 Register
               </Nav.Link>
             )}
+            
             {auth && (
               <Nav.Link as={Link} to="/">
                 Home
+              </Nav.Link>
+            )}
+            {auth && (
+              <Nav.Link as={Link} to="/regMedidor">
+                RegMedidor
+              </Nav.Link>
+            )}
+            {auth && (
+              <Nav.Link as={Link} to="/Historial">
+                Historial
+              </Nav.Link>
+            )}
+            {auth && (
+              <Nav.Link as={Link} to="/Perfil">
+                Perfil
               </Nav.Link>
             )}
           </Nav>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const UpdatePassword = () => {
