@@ -118,7 +118,7 @@ export default function RegMedidor() {
               <Form.Label>Número del medidor</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Número del medidor"
+                placeholder="Lectura del medidor"
                 value={meterNumber}
                 onChange={(e) => setMeterNumber(e.target.value)}
                 required
