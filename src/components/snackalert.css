@@ -1,0 +1,18 @@
+.snack-alert {
+  position: fixed;
+  bottom: 20px;
+  right: -400px; /* oculto fuera de pantalla */
+  min-width: 250px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Cuando aparece */
+.snack-alert.show {
+  right: 20px;
+  opacity: 1;
+}

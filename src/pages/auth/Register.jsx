@@ -16,35 +16,44 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (
-      !passwordRef.current?.value ||
       !emailRef.current?.value ||
+      !passwordRef.current?.value ||
       !confirmPasswordRef.current?.value
     ) {
-      setErrorMsg("Please fill all the fields");
+      setErrorMsg("Por favor, completa todos los campos");
       return;
     }
+
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setErrorMsg("Passwords doesn't match");
+      setErrorMsg("Las contraseñas no coinciden");
       return;
     }
+
     try {
       setErrorMsg("");
       setLoading(true);
+
       const { data, error } = await register(
         emailRef.current.value,
         passwordRef.current.value
       );
+
       console.log(data);
       console.log(error);
+
       if (!error && data) {
         setMsg(
-          "Registration Successful. Check your email to confirm your account"
+          "Registro exitoso. Por favor revisa tu correo para confirmar tu cuenta"
         );
+      } else if (error) {
+        setErrorMsg(error.message);
       }
     } catch (error) {
-      setErrorMsg("Error in Creating Account");
+      setErrorMsg("Error al crear la cuenta");
     }
+
     setLoading(false);
   };
 
@@ -52,43 +61,54 @@ const Register = () => {
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Register</h2>
+          <h2 className="text-center mb-4">Registro</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label>Correo electrónico</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
+
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
+
             <Form.Group id="confirm-password">
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label>Confirmar contraseña</Form.Label>
               <Form.Control type="password" ref={confirmPasswordRef} required />
             </Form.Group>
+
             {errorMsg && (
               <Alert
                 variant="danger"
                 onClose={() => setErrorMsg("")}
-                dismissible>
+                dismissible
+              >
                 {errorMsg}
               </Alert>
             )}
+
             {msg && (
-              <Alert variant="success" onClose={() => setMsg("")} dismissible>
+              <Alert
+                variant="success"
+                onClose={() => setMsg("")}
+                dismissible
+              >
                 {msg}
               </Alert>
             )}
+
             <div className="text-center mt-2">
               <Button disabled={loading} type="submit" className="w-50">
-                Register
+                Registrarse
               </Button>
             </div>
           </Form>
         </Card.Body>
       </Card>
+
       <div className="w-100 text-center mt-2">
-        Already a User? <Link to={"/login"}>Login</Link>
+        ¿Ya tienes cuenta? <Link to={"/login"}>Inicia sesión</Link>
       </div>
     </>
   );
