@@ -35,7 +35,7 @@ export default function Historial() {
           <Table striped bordered hover responsive>
             <thead>
               <tr>
-                <th>Medidor</th>
+                <th>Lectura del Medidor</th>
                 <th>Lectura (°C)</th>
                 <th>Foto</th>
                 <th>Fecha</th>
