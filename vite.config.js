@@ -4,10 +4,9 @@ import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig({
   server: {
-    https: true,   // ← activa HTTPS
+    https: true,
+    host: "localhost",  // importante
+    port: 5173,
   },
-  plugins: [
-    react(),
-    mkcert(),      // ← genera certificados automáticamente
-  ],
+  plugins: [react(), mkcert()],
 });
